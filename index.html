@@ -21,12 +21,7 @@ body {
   padding: 5px 15px;
 }
 
-.title-logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.title {
+.header a {
   font-family: 'Sofia Sans Condensed';
   font-size: 8vw;
   color: #FFA600;
@@ -34,19 +29,10 @@ body {
   flex: 1;
 }
 
-.logo {
-  max-width: 50%;
-  height: auto;
-}
-
 @media only screen and (max-width: 600px) {
   .title-logo-container {
     flex-direction: column;
     align-items: center; 
-  }
-
-  .logo {
-    margin-top: 10px;
   }
 }
 
@@ -54,9 +40,7 @@ body {
 <body>
 
 <div class="header">
-  <div class="title-logo-container">
-    <h1 class="title">PAPA VER'S BUNDATAN</h1>
-    <img src="logo.png" alt="Papa Ver's Bundatan Logo" class="logo">
+    <h1 class="header a">PAPA VER'S BUNDATAN</h1>
   </div>
 </div>
 
