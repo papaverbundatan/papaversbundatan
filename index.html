@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <style>
 
@@ -92,9 +91,10 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  border:3px;
-  border-radius:5px;
+  border: 3px;
+  border-radius: 5px;
   padding-top: 60px;
+  animation: bounceIn 0.5s ease-in-out;
 }
 
 .modal-content {
@@ -104,6 +104,19 @@ body {
   width: 80%;
 }
 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .close {
   color: black;
   float: right;
@@ -234,10 +247,6 @@ function closePopup(popupId) {
   var modal = document.getElementById(popupId);
   modal.style.display = "none";
 }
-
-  $("#myModal").on("show.bs.modal", function () {
-    $(this).find(".modal-dialog").addClass("animate__bounceIn");
-  });
 
 </script>
 
