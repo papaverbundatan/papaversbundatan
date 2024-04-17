@@ -18,26 +18,37 @@ body {
 .header {
   overflow: hidden;
   background-color: #F78702;
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+.title-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Sofia Sans Condensed';
+  font-size: 8vw;
+  color: #FFA600;
+  text-shadow: 1px 1px 2px #000011;
+  flex: 1;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
+  max-width: 50%;
   height: auto;
+  margin-left: 20px;
 }
 
 </style>
 <body>
 
 <div class="header">
-  <h1 style="font-family: 'Sofia Sans Condensed' font-size: 8vw; text-align: center; color:#FFA600; text-shadow: 1px 1px 2px #000011;">PAPA VER'S BUNDATAN</h1>
-  
-  <img src="logo.png" alt="Papa Ver's Bundatan Logo" class="logo">
-
+  <div class="title-logo-container">
+    <h1 class="title">PAPA VER'S BUNDATAN</h1>
+    <img src="logo.png" alt="Papa Ver's Bundatan Logo" class="logo">
+  </div>
 </div>
-
 
 </head>
 </head>
