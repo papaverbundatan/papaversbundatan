@@ -238,15 +238,44 @@ function updateCart() {
   var cartElement = document.getElementById("cart");
   cartElement.innerHTML = "<p>ITEMS:</p>";
   var ul = document.createElement("ul");
+  
+  var totalItems = 0;
+  var totalPrice = 0;
+
   cartItems.forEach(function(item) {
     var li = document.createElement("li");
     li.textContent = item.name + " (Quantity: " + item.quantity + ")";
     ul.appendChild(li);
+    
+    totalItems += parseInt(item.quantity);
+    totalPrice += parseInt(item.quantity) * getItemPrice(item.name); // Assuming each item has a fixed price
   });
+  
+  // Display total number of items and total price
   cartElement.appendChild(ul);
+  cartElement.innerHTML += "<p>Total Items: " + totalItems + "</p>";
+  cartElement.innerHTML += "<p>Total Price: ₱" + totalPrice.toFixed(2) + "</p>";
 
   // Update hidden input field with cart items
   document.getElementById("cart-items").value = JSON.stringify(cartItems);
+}
+
+// Function to get the price of an item
+function getItemPrice(itemName) {
+  switch(itemName) {
+    case "Chicken":
+      return 110.00;
+    case "Tapa w/ Egg":
+      return 100.00;
+    case "Beef Pares":
+      return 90.00;
+    case "Lechon Pares":
+      return 100.00;
+    case "Mami":
+      return 60.00;
+    default:
+      return 0; // Default price if item not found
+  }
 }
   </script>
 </body>
