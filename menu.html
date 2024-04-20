@@ -1,161 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation Form with Menu</title>
+  <style>
     body {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 400;
-        background: #FFA600;
-        margin: 10px;
-        overflow-x: hidden;
-}
-    
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
     .container {
-        display: flex;
-        height: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
-    .column {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .menu-item {
+      margin-bottom: 20px;
     }
-    
-    .card {
-    width: 100%;
-    max-width: 350px;
-    height: 250px;
-    background-color: #FEBA4F;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.3s ease-in-out;
-    opacity: 0;
-    transform: translateY(100px);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    scroll-behavior: smooth;
-}
-
-.card:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-}
-
-    @media screen and (max-width: 600px) {
-        .card {
-            width: 90%;
-            max-width: none;
-        }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
     }
-    
-    @media screen and (max-width: 600px) {
-        .container {
-            flex-direction: column;
-        }
-
-        .column {
-            margin-bottom: 20px;
-        }
-
-        .card {
-            width: 90%;
-            max-width: none;
-        }
+    input[type="text"],
+    input[type="time"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
     }
-
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-footer {
-    background-color: #F78702;
-    color: #FFF;
-    text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
-</style>
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    #cart {
+      margin-bottom: 20px;
+    }
+    .menu-container {
+      margin-bottom: 20px;
+    }
+    .menu-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .menu-item:hover {
+      background-color: #f9f9f9;
+    }
+    .quantity-container {
+      display: flex;
+      align-items: center;
+    }
+    .quantity-input {
+      flex: 1;
+      margin-right: 10px;
+    }
+    .quantity-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .quantity-button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-
-<h1 style="font-family: 'Style Script'; font-weight: 700; font-size: 12vw; text-align: center; color: #F78702; text-shadow: 1px 1px 2px #000011;">Menu Section</h1> <br>
-    <h2 style="font-size: 7vw; font-weight: 500; color: #F78702;  text-align: center;">AVAILABLE</h2>
-    <div class="container">
-    <div class="column" id="left-column">
-        <div class="card"><img src="img2.jpg" alt="Menu Item 1"></div>
-        <div class="card"><img src="img1.jpg" alt="Menu Item 2"></div>
-        <div class="card"><img src="img3.jpg" alt="Menu Item 3"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 4"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 5"></div>
+  <div class="container">
+    <h2>RESERVATION FORM</h2>
+    <div class="menu-container">
+      <div class="menu-item">
+        <h3>Item 1</h3>
+        <p>Description of Item 1</p>
+        <p>Price: $10</p>
+        <div class="quantity-container">
+          <input type="number" class="quantity-input" id="quantity1" name="quantity1" min="1" value="1">
+          <button class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
+        </div>
+        <button onclick="addToCart('Item 1', document.getElementById('quantity1').value)">Add to Cart</button>
+      </div>
+      <div class="menu-item">
+        <h3>Item 2</h3>
+        <p>Description of Item 2</p>
+        <p>Price: $15</p>
+        <div class="quantity-container">
+          <input type="number" class="quantity-input" id="quantity2" name="quantity2" min="1" value="1">
+          <button class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
+        </div>
+        <button onclick="addToCart('Item 2', document.getElementById('quantity2').value)">Add to Cart</button>
+      </div>
+      <!-- Add more menu items as needed -->
     </div>
-    <div class="column" id="right-column">
-        <div class="card"><img src="logo.png" alt="Menu Item 6"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 7"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 8"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 9"></div>
-        <div class="card"><img src="logo.png" alt="Menu Item 10"></div>
-    </div>
-</div>
+    <div id="cart"></div>
+    <form id="reservation-form" action="https://formsubmit.co/hanjimille@gmail.com" method="POST">
+      <div class="form-group">
+        <label for="name">NAME:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">PHONE NUMBER:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" maxlength="11" required>
+      </div>
+      <div class="form-group">
+        <label for="email">EMAIL:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="address">ADDRESS:</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="pickup-time">PICK-UP TIME (3:00 PM - 11:30 PM):</label>
+        <input type="time" id="pickup-time" name="pickup-time" min="14:00" max="23:59" required>
+      </div>
+      <input type="hidden" id="cart-items" name="cart-items">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
-<footer>
-    <button style="  font-family: 'Barlow Condensed';
-  font-weight: 400;
-  background-color: #FEBA4F;
-  color: white;
-  padding: 10px;
-  align-items: center;
-  text-decoration: none;
-  display: block;
-  font-size: 20px;
-  width: 40%;
-  border: black;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: auto;" onclick= "window.location.href = 'index.html';">ORDER ONLINE</button>
-    <button style="font-family: 'Barlow Condensed';
-               font-weight: 400;
-               background-color: #FFA600;
-               color: white;
-               padding: 10px;
-               align-items: center;
-               text-decoration: none;
-               display: block;
-               font-size: 20px;
-               width: 20%;
-               border: black;
-               cursor: pointer;
-               transition: 0.3s;
-               margin: auto;
-               margin-top: 10px;" onclick="window.history.back();">BACK</button>
-</footer>
+  <script>
+    var cartItems = [];
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        });
-    </script>
+    function incrementQuantity(quantityInputId) {
+      var quantityInput = document.getElementById(quantityInputId);
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+
+    function addToCart(itemName, quantity) {
+      cartItems.push({ name: itemName, quantity: quantity });
+      updateCart();
+    }
+
+    function updateCart() {
+      var cartElement = document.getElementById("cart");
+      cartElement.innerHTML = "<p>Items added to cart:</p>";
+      var ul = document.createElement("ul");
+      cartItems.forEach(function(item) {
+        var li = document.createElement("li");
+        li.textContent = item.name + " (Quantity: " + item.quantity + ")";
+        ul.appendChild(li);
+      });
+      cartElement.appendChild(ul);
+
+      // Update hidden input field with cart items
+      document.getElementById("cart-items").value = JSON.stringify(cartItems);
+    }
+  </script>
 </body>
-</html>
+            </html>
