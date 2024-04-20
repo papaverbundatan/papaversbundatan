@@ -88,24 +88,24 @@
     <h2>RESERVATION FORM</h2>
     <div class="menu-container">
       <div class="menu-item">
-        <h3>Item 1</h3>
-        <p>Description of Item 1</p>
-        <p>Price: $10</p>
+        <h3>Chicken</h3>
+        <p>Rice Meal</p>
+        <p>Price: PHP. 110.00</p>
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity1" name="quantity1" min="1" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
         </div>
-        <button onclick="addToCart('Item 1', document.getElementById('quantity1').value)">Add to Cart</button>
+        <button onclick="addToCart('Chicken', document.getElementById('quantity1').value)">Add to Cart</button>
       </div>
       <div class="menu-item">
-        <h3>Item 2</h3>
-        <p>Description of Item 2</p>
-        <p>Price: $15</p>
+        <h3>Tapa w/ Egg</h3>
+        <p>Rice Meal</p>
+        <p>Price: PHP. 100.00</p>
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity2" name="quantity2" min="1" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
         </div>
-        <button onclick="addToCart('Item 2', document.getElementById('quantity2').value)">Add to Cart</button>
+        <button onclick="addToCart('Tapa w/ Egg', document.getElementById('quantity2').value)">Add to Cart</button>
       </div>
       <!-- Add more menu items as needed -->
     </div>
@@ -113,7 +113,7 @@
     <form id="reservation-form" action="https://formsubmit.co/ff85c7cccae7a1753c541ef3ef4fca99" method="POST">
 
 <input type="hidden" name="_next" value="https://papaverbundatan.github.io/papaversbundatan/index.html">
-<input type="hidden" name="_autoresponse" value="We have received your order. Please wait patiently as we process. Thank you!">
+<input type="hidden" name="_autoresponse" value="We have received your order and is now processing. Thank you for choosing Papa Ver's Bundatan!">
       <div class="form-group">
         <label for="name">NAME:</label>
         <input type="text" id="name" name="name" required>
