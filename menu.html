@@ -96,6 +96,7 @@
           <button class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
         </div>
         <button onclick="addToCart('Chicken', document.getElementById('quantity1').value)">ADD</button>
+<button onclick="removeFromCart('Chicken')">REMOVE</button>
       </div>
       <div class="menu-item">
         <h3>Tapa w/ Egg</h3>
@@ -106,6 +107,7 @@
           <button class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
         </div>
         <button onclick="addToCart('Tapa w/ Egg', document.getElementById('quantity2').value)">ADD</button>
+<button onclick="removeFromCart('Beef Pares')">REMOVE</button>
       </div>
 <div class="menu-item">
         <h3>Beef Pares</h3>
@@ -116,6 +118,7 @@
           <button class="quantity-button" onclick="incrementQuantity('quantity3')">+</button>
         </div>
         <button onclick="addToCart('Beef Pares', document.getElementById('quantity3').value)">ADD</button>
+<button onclick="removeFromCart('Beef Pares')">REMOVE</button>
       </div>
 
 <div class="menu-item">
@@ -127,6 +130,7 @@
           <button class="quantity-button" onclick="incrementQuantity('quantity4')">+</button>
         </div>
         <button onclick="addToCart('Lechon Pares', document.getElementById('quantity4').value)">ADD</button>
+<button onclick="removeFromCart('Lechon Pares')">REMOVE</button>
       </div> <br> <br>
 
 
@@ -163,7 +167,7 @@
   </div>
 
   <script>
-    var cartItem = null;
+    var cartItems = [];
 
 function incrementQuantity(quantityInputId) {
   var quantityInput = document.getElementById(quantityInputId);
@@ -171,40 +175,48 @@ function incrementQuantity(quantityInputId) {
 }
 
 function addToCart(itemName, quantity) {
-  // If there's already an item in the cart, remove it before adding a new one
-  if (cartItem) {
-    removeFromCart(cartItem.name);
+  // Check if the item already exists in the cart
+  var existingItemIndex = cartItems.findIndex(function(item) {
+    return item.name === itemName;
+  });
+
+  // If the item exists, update its quantity
+  if (existingItemIndex !== -1) {
+    cartItems[existingItemIndex].quantity = quantity;
+  } else { // If the item is new, add it to the cart
+    cartItems.push({ name: itemName, quantity: quantity });
   }
-  cartItem = { name: itemName, quantity: quantity };
+  
   updateCart();
 }
 
 function removeFromCart(itemName) {
-  cartItem = null;
+  // Find the index of the item to remove
+  var itemIndex = cartItems.findIndex(function(item) {
+    return item.name === itemName;
+  });
+
+  // Remove the item from the cart
+  if (itemIndex !== -1) {
+    cartItems.splice(itemIndex, 1);
+  }
+  
   updateCart();
 }
 
 function updateCart() {
   var cartElement = document.getElementById("cart");
-  cartElement.innerHTML = "<p>SELECTED ITEM:</p>";
-  if (cartItem) {
-    var p = document.createElement("p");
-    p.textContent = cartItem.name + " (Quantity: " + cartItem.quantity + ")";
-    cartElement.appendChild(p);
-    
-    // Add remove button
-    var removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.onclick = function() {
-      removeFromCart(cartItem.name);
-    };
-    cartElement.appendChild(removeButton);
-  } else {
-    cartElement.innerHTML += "<p>No item selected</p>";
-  }
+  cartElement.innerHTML = "<p>ITEMS:</p>";
+  var ul = document.createElement("ul");
+  cartItems.forEach(function(item) {
+    var li = document.createElement("li");
+    li.textContent = item.name + " (Quantity: " + item.quantity + ")";
+    ul.appendChild(li);
+  });
+  cartElement.appendChild(ul);
 
   // Update hidden input field with cart items
-  document.getElementById("cart-items").value = JSON.stringify(cartItem);
+  document.getElementById("cart-items").value = JSON.stringify(cartItems);
 }
   </script>
 </body>
