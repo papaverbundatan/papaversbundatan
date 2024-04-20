@@ -148,7 +148,7 @@
     }
 
     function addToCart(itemName, quantity) {
-      cartItems.push({ itemName, quantity });
+      cartItems.push({ name: itemName, quantity: quantity });
       updateCart();
     }
 
@@ -164,7 +164,7 @@
       cartElement.appendChild(ul);
 
       // Update hidden input field with cart items
-      document.getElementById("cart-items").value = JSON.stringify(cartItems);
+      document.getElementById("ORDERS").value = JSON.stringify(cartItems);
     }
   </script>
 </body>
