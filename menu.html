@@ -163,32 +163,49 @@
   </div>
 
   <script>
-    var cartItems = [];
+    var cartItem = null;
 
-    function incrementQuantity(quantityInputId) {
-      var quantityInput = document.getElementById(quantityInputId);
-      quantityInput.value = parseInt(quantityInput.value) + 1;
-    }
+function incrementQuantity(quantityInputId) {
+  var quantityInput = document.getElementById(quantityInputId);
+  quantityInput.value = parseInt(quantityInput.value) + 1;
+}
 
-    function addToCart(itemName, quantity) {
-      cartItems.push({ name: itemName, quantity: quantity });
-      updateCart();
-    }
+function addToCart(itemName, quantity) {
+  // If there's already an item in the cart, remove it before adding a new one
+  if (cartItem) {
+    removeFromCart(cartItem.name);
+  }
+  cartItem = { name: itemName, quantity: quantity };
+  updateCart();
+}
 
-    function updateCart() {
-      var cartElement = document.getElementById("cart");
-      cartElement.innerHTML = "<p>ITEMS:</p>";
-      var ul = document.createElement("ul");
-      cartItems.forEach(function(item) {
-        var li = document.createElement("li");
-        li.textContent = item.name + " (Quantity: " + item.quantity + ")";
-        ul.appendChild(li);
-      });
-      cartElement.appendChild(ul);
+function removeFromCart(itemName) {
+  cartItem = null;
+  updateCart();
+}
 
-      // Update hidden input field with cart items
-      document.getElementById("cart-items").value = JSON.stringify(cartItems);
-    }
+function updateCart() {
+  var cartElement = document.getElementById("cart");
+  cartElement.innerHTML = "<p>SELECTED ITEM:</p>";
+  if (cartItem) {
+    var p = document.createElement("p");
+    p.textContent = cartItem.name + " (Quantity: " + cartItem.quantity + ")";
+    cartElement.appendChild(p);
+    
+    // Add remove button
+    var removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.onclick = function() {
+      removeFromCart(cartItem.name);
+    };
+    cartElement.appendChild(removeButton);
+  } else {
+    cartElement.innerHTML += "<p>No item selected</p>";
+  }
+
+  // Update hidden input field with cart items
+  document.getElementById("cart-items").value = JSON.stringify(cartItem);
+}
   </script>
 </body>
             </html>
