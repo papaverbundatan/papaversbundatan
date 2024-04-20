@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reservation Form with Menu</title>
+  <title>Make an Order</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -85,29 +85,39 @@
 </head>
 <body>
   <div class="container">
-    <h2>RESERVATION FORM</h2>
+    <h2>SELECT ITEMS</h2>
     <div class="menu-container">
       <div class="menu-item">
         <h3>Chicken</h3>
         <p>Rice Meal</p>
         <p>Price: ₱110.00</p>
         <div class="quantity-container">
-          <input type="number" class="quantity-input" id="quantity1" name="quantity 1" min="1" value="1">
+          <input type="number" class="quantity-input" id="quantity1" name="quantity 1" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
         </div>
-        <button onclick="addToCart('Chicken', document.getElementById('quantity1').value)">Add to Cart</button>
+        <button onclick="addToCart('Chicken', document.getElementById('quantity1').value)">ADD</button>
       </div>
       <div class="menu-item">
         <h3>Tapa w/ Egg</h3>
         <p>Rice Meal</p>
         <p>Price: ₱100.00</p>
         <div class="quantity-container">
-          <input type="number" class="quantity-input" id="quantity2" name="quantity2" min="1" value="1">
+          <input type="number" class="quantity-input" id="quantity2" name="quantity2" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
         </div>
-        <button onclick="addToCart('Tapa w/ Egg', document.getElementById('quantity2').value)">Add to Cart</button>
+        <button onclick="addToCart('Tapa w/ Egg', document.getElementById('quantity2').value)">ADD</button>
       </div>
-      <!-- Add more menu items as needed -->
+<div class="menu-item">
+        <h3>Beef Pares</h3>
+        <p>Pares/Mami</p>
+        <p>Price: ₱100.00</p>
+        <div class="quantity-container">
+          <input type="number" class="quantity-input" id="quantity3" name="quantity3" min="1" max="5" value="1">
+          <button class="quantity-button" onclick="incrementQuantity('quantity3')">+</button>
+        </div>
+        <button onclick="addToCart('Beef Pares', document.getElementById('quantity3').value)">ADD</button>
+      </div>
+
     </div>
     <div id="cart"></div>
     <form id="reservation-form" action="https://formsubmit.co/ff85c7cccae7a1753c541ef3ef4fca99" method="POST">
@@ -117,23 +127,23 @@
       <div class="form-group">
         <label for="name">NAME:</label>
         <input type="text" id="name" name="Name" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">PHONE NUMBER:</label>
-        <input type="tel" id="phone" name="Phone Number" pattern="[0-9]{11}" maxlength="11" required>
-      </div>
-      <div class="form-group">
-        <label for="email">EMAIL:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
+      </div> <br>
+<div class="form-group">
         <label for="address">ADDRESS:</label>
         <input type="text" id="address" name="Address" required>
       </div>
       <div class="form-group">
+        <label for="phone">PHONE NUMBER:</label>
+        <input type="tel" id="phone" name="Phone Number" pattern="[0-9]{11}" maxlength="11" required>
+      </div> <br>
+      <div class="form-group">
+        <label for="email">EMAIL:</label>
+        <input type="email" id="email" name="email" required>
+      </div> <br>
+      <div class="form-group">
         <label for="pickup-time">PICK-UP TIME (3:00 PM - 11:30 PM):</label>
         <input type="time" id="pickup-time" name="Pick-up Time" min="14:00" max="23:59" required>
-      </div>
+      </div> <br>
       <input type="hidden" id="cart-items" name="Orders">
       <input type="submit" value="Submit">
     </form>
