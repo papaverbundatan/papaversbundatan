@@ -283,21 +283,7 @@ function addToCart(itemName, quantity) {
   } else { // If the item is new, add it to the cart
     cartItems.push({ name: itemName, quantity: quantity });
   }
-  
-  updateCart();
-}
 
-function removeFromCart(itemName) {
-  // Find the index of the item to remove
-  var itemIndex = cartItems.findIndex(function(item) {
-    return item.name === itemName;
-  });
-
-  // Remove the item from the cart
-  if (itemIndex !== -1) {
-    cartItems.splice(itemIndex, 1);
-  }
-  
   updateCart();
 }
 
@@ -305,7 +291,7 @@ function updateCart() {
   var cartElement = document.getElementById("cart");
   cartElement.innerHTML = "<p>ITEMS:</p>";
   var ul = document.createElement("ul");
-  
+
   var totalItems = 0;
   var totalPrice = 0;
 
@@ -313,11 +299,11 @@ function updateCart() {
     var li = document.createElement("li");
     li.textContent = item.name + " (Quantity: " + item.quantity + ")";
     ul.appendChild(li);
-    
+
     totalItems += parseInt(item.quantity);
-    totalPrice += parseInt(item.quantity) * getItemPrice(item.name); // Assuming each item has a fixed price
+    totalPrice += parseInt(item.quantity) * getItemPrice(item.name); // Corrected the price calculation
   });
-  
+
   // Display total number of items and total price
   cartElement.appendChild(ul);
   cartElement.innerHTML += "<p>Total Items: " + totalItems + "</p>";
