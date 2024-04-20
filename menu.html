@@ -81,6 +81,12 @@
     .quantity-button:hover {
       background-color: #45a049;
     }
+.quantity-button.minus {
+  background-color: #f44336;
+}
+.quantity-button.minus:hover {
+  background-color: #d32f2f;
+}
   </style>
 </head>
 <body>
@@ -94,7 +100,7 @@
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity1" name="quantity 1" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
-<button class="quantity-button" onclick="decrementQuantity('quantity1')">-</button>
+<button class="quantity-button minus" onclick="decrementQuantity('quantity1')">-</button>
         </div>
         <button onclick="addToCart('Chicken', document.getElementById('quantity1').value)">ADD</button>
 <button onclick="removeFromCart('Chicken')">REMOVE</button>
@@ -106,7 +112,7 @@
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity2" name="quantity2" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
-<button class="quantity-button" onclick="decrementQuantity('quantity2')">-</button>
+<button class="quantity-button minus" onclick="decrementQuantity('quantity2')">-</button>
         </div>
         <button onclick="addToCart('Tapa w/ Egg', document.getElementById('quantity2').value)">ADD</button>
 <button onclick="removeFromCart('Beef Pares')">REMOVE</button>
@@ -118,7 +124,7 @@
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity3" name="quantity3" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity3')">+</button>
-<button class="quantity-button" onclick="decrementQuantity('quantity3')">-</button>
+<button class="quantity-button minus" onclick="decrementQuantity('quantity3')">-</button>
         </div>
         <button onclick="addToCart('Beef Pares', document.getElementById('quantity3').value)">ADD</button>
 <button onclick="removeFromCart('Beef Pares')">REMOVE</button>
@@ -131,7 +137,7 @@
         <div class="quantity-container">
           <input type="number" class="quantity-input" id="quantity4" name="quantity4" min="1" max="5" value="1">
           <button class="quantity-button" onclick="incrementQuantity('quantity4')">+</button>
-<button class="quantity-button" onclick="decrementQuantity('quantity4')">-</button>
+<button class="quantity-button minus" onclick="decrementQuantity('quantity4')">-</button>
         </div>
         <button onclick="addToCart('Lechon Pares', document.getElementById('quantity4').value)">ADD</button>
 <button onclick="removeFromCart('Lechon Pares')">REMOVE</button>
