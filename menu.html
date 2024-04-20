@@ -193,7 +193,9 @@
 
 function incrementQuantity(quantityInputId) {
   var quantityInput = document.getElementById(quantityInputId);
-  quantityInput.value = parseInt(quantityInput.value) + 1;
+  if (parseInt(quantityInput.value) < parseInt(quantityInput.getAttribute('max'))) {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+  }
 }
 
 function decrementQuantity(quantityInputId) {
@@ -203,7 +205,6 @@ function decrementQuantity(quantityInputId) {
     addToCart(quantityInputId.substring(9), quantityInput.value);
   }
 }
-
 function addToCart(itemName, quantity) {
   // Check if the item already exists in the cart
   var existingItemIndex = cartItems.findIndex(function(item) {
